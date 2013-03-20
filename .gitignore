@@ -1,0 +1,15 @@
+# Maven derived files that should not be committed
+target/*
+.checkstyle
+.pmd*
+
+# Eclipse derived files that should not be committed
+.settings/*
+
+# Netbeans derived files
+nbactions.xml
+nb-configuration.xml
+
+# Data files
+*.jaccs
+*.pairs

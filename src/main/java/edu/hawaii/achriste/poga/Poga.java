@@ -11,7 +11,6 @@
 package edu.hawaii.achriste.poga;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import org.bridj.Pointer;
 
@@ -26,12 +25,38 @@ import com.nativelibs4java.opencl.JavaCL;
 import com.nativelibs4java.util.IOUtils;
 import java.io.File;
 
+/**
+ * Manages the setup/teardown and execution of various kernels on OpenCL
+ * devices for overlapping graph algorithms. 
+ * 
+ * @author Anthony Christe
+ */
 public class Poga {
-
+    /**
+     * OpenCL context object.
+     */
     private CLContext context = null;
+    
+    /**
+     * OpenCL queue object.
+     */
     private CLQueue queue = null;
+    
+    /**
+     * OpenCL program object.
+     */
     private CLProgram program = null;
+    
+    /**
+     * Locations of source file which contains OpenCL kernels for this 
+     * program.
+     */
     private final String PROGRAM_NAME = "src/main/opencl/ParallelOverlappingCommunities.cl";
+    
+    /**
+     * Kernel used for finding Jaccard similarities on non-weighted,
+     * non-directed graphs.
+     */
     private final String JACCARD_KERNEL = "jaccardSimilarity";
 
     /**

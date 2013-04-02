@@ -1,15 +1,27 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This program manages calls to the OpenCL framework in order to perform edge
+ * similarity analysis and hierarchical clustering.
+ *
+ * This file is part of a masters thesis work at UH Manoa. No person other than
+ * the copyright holder may modify, use, or distribute this work, unless given
+ * explicit permission by the copyright holder.
+ *
+ * Copyright (c) 2013 Anthony Christe
  */
 package edu.hawaii.achriste.poga;
 
 /**
- *
- * @author Anthony
+ * Simulates parallel code in a serial manner in-order to debug kernel
+ * algorithms without running them on the GPU.
+ * 
+ * @author Anthony Christe
  */
 public class OpenCLTest {
 
+    /**
+     * Simulates running the jaccardSimilarity finder in parallel.
+     * @see ParallelOverlappingCommunities.cl for documentation on this algorithm.
+     */
     public static float[] jaccardSimilarity(int[] adjList, int[] startIndices, int sims) {
         System.out.println(sims);
         float[] jaccards = new float[sims];

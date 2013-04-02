@@ -17,19 +17,33 @@ import java.util.TreeSet;
 import com.nativelibs4java.util.IOUtils;
 
 /**
- * Loads a .pairs file and stores the file as an adjacency matrix.
- *
+ * Loads a .pairs file and stores the file as an adjacency list in one
+ * dimension.
+ * 
  * @author Anthony Christe
  *
  */
 public class Graph {
-
+    /**
+     * Stores the 1D array of the graph.
+     */
     private int[] adjList;
 
+    /**
+     * Initializes a new Graph object using a file of vertex pairs.
+     * 
+     * @param pairsFileLoc The location of the pairs file.
+     */
     public Graph(String pairsFileLoc) {
         init(pairsFileLoc);
     }
 
+    /**
+     * Reads pairs file, creates node to neighbor mapping, and converts
+     * the mapping into the adjacency list.
+     * 
+     * @param pairsFileLoc The location of the pairs file.
+     */
     private void init(String pairsFileLoc) {
         String pairsFile;
         SortedMap<Integer, SortedSet<Integer>> nodeToNeighborMapping;
@@ -76,6 +90,7 @@ public class Graph {
 
         int[] vals = new int[2];
 
+        // Iterate over file one line at a time and grab each pair of vertices
         for (String line : pairsFile.split("\n")) {
             splitLine = line.split(" ");
             vals[0] = Integer.parseInt(splitLine[0]);
